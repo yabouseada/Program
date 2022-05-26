@@ -6,14 +6,15 @@ namespace UniqueApp
 
         public static bool hasAllUniqueCharacters(String str)
         {
+            Dictionary<char, int> i = new Dictionary<char, int>();
 
-            // If two similar caracters are found return false
-            for (int i = 0; i < str.Length; i++)
-                for (int j = i + 1; j < str.Length; j++)
-                    if (str[i] == str[j])
-                        return false;
-
-            // If none similar caracters are found return true
+            foreach (char j in str)
+            {
+                if (i.ContainsKey(j))
+                    return false;
+                else
+                    i.Add(j, 1);
+            }
             return true;
         }
 
